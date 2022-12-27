@@ -26,4 +26,12 @@ public class ContactUtility {
             System.debug(Fullname);
         }
     }
+}public class AccountUtility {
+    public static void viewAnnualRevenue(){
+    List<Account> accountsList=[SELECT Name, AnnualRevenue FROM Account];
+    for(Account acctRev:accountsList){
+        System.debug('Account Name:  '+acctRev.Name+'   Annual Revenue :  '+Account.AnnualRevenue);
+        
+    }
+}
 }
