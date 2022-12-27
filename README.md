@@ -18,3 +18,12 @@ for(Integer a=0; a<m.size();a++){
     String n=m.get(a);
 System.debug(n.charAt(0));
 }
+public class ContactUtility {
+    public static void viewContacts(){
+    List<Contact> ListOfContacts=[SELECT FirstName, LastName FROM Contact];
+        for(Contact con:ListOfContacts){
+         String Fullname='First Name:   '+con.FirstName+'  Last Name :   '+con.LastName;
+            System.debug(Fullname);
+        }
+    }
+}
