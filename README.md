@@ -27,3 +27,6 @@ Contact con = new Contact(
     Email='jsmith@testaccount.com',
     AccountId=acctID);
 insert con;
+List<Contact> listofContacts=[SELECT FirstName,LastName 
+                        FROM Contact LIMIT 2];
+System.debug(ListofContacts);
