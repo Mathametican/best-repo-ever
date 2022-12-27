@@ -35,3 +35,11 @@ public class ContactUtility {
     }
 }
 }
+public class PropertyUtility {
+    Public static void newListedProperties(){
+        List<Property__c> newPropList=[SELECT  Name,Date_Pre_Market__c, Broker__r.Email__c FROM Property__c WHERE Date_Listed__c > Last_N_Days:30];
+        for(Property__c Pro:newPropList){
+           System.debug('Property Name :  '+Pro.Name+'  Broker Email :  '+Pro.Broker__r.Email__c);  
+        }
+   }
+}
