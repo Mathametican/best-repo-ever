@@ -43,3 +43,12 @@ public class PropertyUtility {
         }
    }
 }
+
+List<String> colors = New List<String>{'Red', 'Yellow', 'Blue' };
+   List<String> moreColors = New List<String>();
+   moreColors.add('purple');
+   moreColors.add('Pink');
+for(Integer i=0; i<colors.size();i++){
+    moreColors.add(colors.get(i));
+}
+   System.debug(moreColors);
