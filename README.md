@@ -114,3 +114,31 @@ Sobject CWSobj=[SELECT Id, Name FROM Account WHERE Name ='Apex CW'];
 System.debug(CWSobj);
 System.debug(CWSobj.get('Name')); 
 // Sobject te field çagırma .get('field name');
+
+Contact singleContact = [SELECT ID, Name, Phone, Email,
+                        Account.Name, Account.phone FROM 
+                        Contact WHERE Name ='John Bond' LIMIT 1];
+//child
+System.debug(singleContact.Id);
+System.debug(singleContact.Name);
+System.debug(singleContact.Phone);
+System.debug(singleContact.Email);
+//Parent
+System.debug(singleContact.Account.Name);
+System.debug(singleContact.Account.Phone);
+System.debug('******************************');
+//Generic Sobject
+Sobject singleSobject=[SELECT Id, Name, Phone, Email, Account.Name,
+                      Account.Phone FROM Contact 
+                      WHERE Name='John Bond' LIMIT 1];
+System.debug(singleSobject);
+//child
+System.debug(singleSobject.get('Id'));
+System.debug(singleSobject.get('Name'));
+System.debug(singleSobject.get('Phone'));
+System.debug(singleSobject.get('Email'));
+//Parent
+System.debug(singleSobject.getSobject('Account').get('Name'));
+System.debug(singleSobject.getSobject('Account').get('Phone'));
+// Yukardaki 2 satırda contact objectin parent related olan Account.name
+// field Sobject ile singleSobject.getSobject('Account').get('Name');
