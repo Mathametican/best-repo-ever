@@ -52,3 +52,28 @@ for(Integer i=0; i<colors.size();i++){
     moreColors.add(colors.get(i));
 }
    System.debug(moreColors);
+
+   //Apex TRIFORCIA 1Opportunity
+//Apex CW 3 Contact - 3 Opportunity
+Account CW=New Account();
+CW.Name='Apex CW';
+insert CW;
+List<Contact> multiContact= New List<Contact>();
+List<Opportunity> multiOpportunity=New List<Opportunity>();
+
+for(Integer num=1; num<=3;num++){
+    Contact singleContact=New Contact();
+    singleContact.FirstName='APEX '+num;
+    singleContact.LastName='CW Worker'+num;
+    singleContact.accountId=CW.id;
+    multiContact.add(singleContact);
+    
+    Opportunity singleOpportunity=New Opportunity();
+    singleOpportunity.Name=CW.Name+'  Opportunity  '+num;
+    singleOpportunity.CloseDate=date.Today()+25;
+    singleOpportunity.StageName='Prospecting';
+    singleOpportunity.accountId=CW.id;
+    multiOpportunity.add(singleOpportunity);
+}
+insert multiContact;
+insert multiOpportunity;
