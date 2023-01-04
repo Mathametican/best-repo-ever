@@ -104,3 +104,13 @@ merge CW triforcia;    // burada triforcia Account ile Apex CW accountu merge
 
 // LIMIT 1 ile birden fazla kayıt varsa o kayıtlardan bir tanesini getirir 
 // buda birden fazla ROW var problemine çözüm oluyor.
+
+Account CW =[SELECT Id, Name FROM Account WHERE Name ='Apex CW'];
+
+System.debug(CW);
+System.debug(CW.Name);
+
+Sobject CWSobj=[SELECT Id, Name FROM Account WHERE Name ='Apex CW'];
+System.debug(CWSobj);
+System.debug(CWSobj.get('Name')); 
+// Sobject te field çagırma .get('field name');
