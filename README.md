@@ -142,3 +142,27 @@ System.debug(singleSobject.getSobject('Account').get('Name'));
 System.debug(singleSobject.getSobject('Account').get('Phone'));
 // Yukardaki 2 satırda contact objectin parent related olan Account.name
 // field Sobject ile singleSobject.getSobject('Account').get('Name');
+
+//parent to Child Sobject
+Sobject CWSobj = [Select Id, Name,
+          (SELECT Id, Name, Phone,Email FROM Contacts),
+          (SELECT Id, Name, Amount, CloseDate, StageName
+           FROM Opportunities) FROM Account WHERE Name='Apex CW'];
+System.debug('Account Details  : ');
+System.debug(CWSobj.get('Id'));
+System.debug(CWSobj.get('Name'));
+System.debug('******************************');
+System.debug('Related SObject ---- Contacts ');
+System.debug(CWSobj.getSObjects('Contacts'));// List<Contact> // Contact[]
+System.debug('++++++++++++++++++++++++++++++');
+for(Contact loopContact:CWSobj.getSobjects('Contacts')){
+    System.debug(loopContact.Name);
+}
+System.debug('^##############################');
+System.debug('Related SObjects ---- Opportunities ');
+System.debug(CWSobj.getSObjects('Opportunities')); // List<Opportunity>  // Opportunity[]
+System.debug('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+for(Opportunity loopOpp:CWSobj.getSobjects('Opportunities')){
+    System.debug(loopOpp.Name);
+    System.debug(loopOpp.CloseDate);
+}
