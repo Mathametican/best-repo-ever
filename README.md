@@ -77,3 +77,15 @@ for(Integer num=1; num<=3;num++){
 }
 insert multiContact;
 insert multiOpportunity;
+
+
+//Apex Triforcia 0 Contact 1 Opportunity
+//APEX CW 3 Contact 3 Opp.
+//APEX CW 3 Contact 4 Opp.
+
+Account triforcia=[SELECT Id, Name FROM Account 
+                   WHERE Name ='Apex-Triforcia'];
+Account CW = [SELECT Id, Name FROM Account WHERE Name='Apex CW'];
+merge CW triforcia;    // burada triforcia Account ile Apex CW accountu merge 
+                       // ettik. iki Account un birleşimi yapıldı.
+                       // Sonuç APEX CW oldu . 
