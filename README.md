@@ -184,4 +184,18 @@ for(Opportunity b:Opp){
     b.Description='This Opportunity is a member of the top5 Accounts.';
     System.debug(b);
     }
-    
+
+   List<List<SObject>> x=[FIND 'de' IN ALL FIELDS 
+                    RETURNING Account(Name), Contact(Name)];
+System.debug(x);
+System.debug(x.get(0));
+System.debug(x.get(1));
+
+List<Account> a=x.get(0);  // Bunun ile Account için yeni bir liste oluşturduk.
+for(Account z:a){
+    system.debug(z.Name);
+}
+List<Contact> b=x.get(1);
+for(Contact y:b){
+    system.debug(y.Name);
+} 
