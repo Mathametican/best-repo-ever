@@ -199,3 +199,22 @@ List<Contact> b=x.get(1);
 for(Contact y:b){
     system.debug(y.Name);
 } 
+
+System.debug(x.get(0));
+System.debug(x.get(1));
+System.debug(x.get(2));
+
+List<Kitap__c> a=x.get(0);  // Bunun ile Account için yeni bir liste oluşturduk.
+for(Kitap__c z:a){
+    system.debug(z.Name);
+}  
+System.debug('🍭🍭🍭🍭🍭🍭🍭🍭🍭🍭🍭🍭');
+List<Yazar__c> b=x.get(1);
+for(Yazar__c y:b){
+    system.debug(y.Name);
+}
+System.debug('✨✨✨✨✨✨✨✨✨✨✨✨✨');
+List<Yay_nevi__c> c=x.get(2);
+for(Yay_nevi__c m:c){
+    System.debug(m.Name);
+}
