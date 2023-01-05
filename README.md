@@ -166,3 +166,22 @@ for(Opportunity loopOpp:CWSobj.getSobjects('Opportunities')){
     System.debug(loopOpp.Name);
     System.debug(loopOpp.CloseDate);
 }
+List<Account> AccList=[SELECT Id, Name,AnnualRevenue,
+                      (SELECT Id, Name,Amount,Description FROM
+                       Opportunities) FROM Account  
+                       WHERE NOT AnnualRevenue = Null
+                       ORDER BY AnnualRevenue Desc LIMIT 5 ];
+System.debug(AccList);
+System.debug(AccList.size());
+     
+List<Opportunity> Opp=New List <Opportunity>();
+for(Account a:AccList){
+    Opp.addALL(a.opportunities);
+    System.debug(a+'++++++'+a.opportunities);
+}
+
+for(Opportunity b:Opp){
+    b.Description='This Opportunity is a member of the top5 Accounts.';
+    System.debug(b);
+    }
+    
